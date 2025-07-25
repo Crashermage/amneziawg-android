@@ -51,10 +51,12 @@ class Application : android.app.Application() {
     override fun attachBaseContext(context: Context) {
         super.attachBaseContext(context)
         if (BuildConfig.MIN_SDK_VERSION > Build.VERSION.SDK_INT) {
-            val intent = Intent(Intent.ACTION_MAIN)
-            intent.addCategory(Intent.CATEGORY_HOME)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            val intent = packageManager.getLaunchIntentForPackage("com.android.launcher3")
+                ?: packageManager.getLaunchIntentForPackage("com.android.launcher")
+                ?: Intent(Intent.ACTION_MAIN).apply {
+                    addCategory(Intent.CATEGORY_HOME)
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                }
             startActivity(intent)
             System.exit(0)
         }

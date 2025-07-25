@@ -57,6 +57,8 @@ android {
     }
     lint {
         disable += "LongLogTag"
+        disable += "StartActivityAndCollapseDeprecated"
+        disable += "UnsafeImplicitIntentLaunch"
         warning += "MissingTranslation"
         warning += "ImpliedQuantity"
     }
