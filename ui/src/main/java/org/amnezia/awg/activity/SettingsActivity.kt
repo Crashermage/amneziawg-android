@@ -78,10 +78,6 @@ class SettingsActivity : AppCompatActivity() {
                     awgQuickOnlyPrefs.forEach { it.parent?.removePreference(it) }
                 }
             }
-            preferenceManager.findPreference<Preference>("log_viewer")?.setOnPreferenceClickListener {
-                startActivity(Intent(requireContext(), LogViewerActivity::class.java))
-                true
-            }
             val kernelModuleEnabler = preferenceManager.findPreference<Preference>("kernel_module_enabler")
             if (AwgQuickBackend.hasKernelSupport()) {
                 lifecycleScope.launch {

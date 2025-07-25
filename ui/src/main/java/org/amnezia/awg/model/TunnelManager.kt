@@ -221,22 +221,6 @@ class TunnelManager(private val configStore: ConfigStore) : BaseObservable() {
                     manager.refreshTunnelStates()
                     return@launch
                 }
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M || !UserKnobs.allowRemoteControlIntents.first())
-                    return@launch
-                val state: Tunnel.State
-                state = when (action) {
-                    "org.amnezia.awg.action.SET_TUNNEL_UP" -> Tunnel.State.UP
-                    "org.amnezia.awg.action.SET_TUNNEL_DOWN" -> Tunnel.State.DOWN
-                    else -> return@launch
-                }
-                val tunnelName = intent.getStringExtra("tunnel") ?: return@launch
-                val tunnels = manager.getTunnels()
-                val tunnel = tunnels[tunnelName] ?: return@launch
-                try {
-                    manager.setTunnelState(tunnel, state)
-                } catch (e: Throwable) {
-                    Toast.makeText(context, ErrorMessages[e], Toast.LENGTH_LONG).show()
-                }
             }
         }
     }

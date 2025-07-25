@@ -38,6 +38,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.lang.ref.WeakReference
 import java.util.Locale
+import androidx.datastore.preferences.core.stringPreferencesKey
+import org.amnezia.awg.util.LocaleManager
 
 class Application : android.app.Application() {
     private val futureBackend = CompletableDeferred<Backend>()
@@ -90,6 +92,14 @@ class Application : android.app.Application() {
         rootShell = RootShell(applicationContext)
         toolsInstaller = ToolsInstaller(applicationContext, rootShell)
         preferencesDataStore = PreferenceDataStoreFactory.create { applicationContext.preferencesDataStoreFile("settings") }
+
+        // Initialize locale from saved preferences
+        runBlocking {
+            val languageKey = stringPreferencesKey("language")
+            val savedLanguage = preferencesDataStore.data.first()[languageKey] ?: "ru"
+            LocaleManager.setLocale(this@Application, savedLanguage)
+        }
+
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             runBlocking {
                 AppCompatDelegate.setDefaultNightMode(if (UserKnobs.darkTheme.first()) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO)

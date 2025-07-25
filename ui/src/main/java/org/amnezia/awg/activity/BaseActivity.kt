@@ -4,6 +4,7 @@
  */
 package org.amnezia.awg.activity
 
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.CallbackRegistry
@@ -12,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import org.amnezia.awg.Application
 import org.amnezia.awg.model.ObservableTunnel
 import kotlinx.coroutines.launch
+import org.amnezia.awg.util.LocaleManager
 
 /**
  * Base class for activities that need to remember the currently-selected tunnel.
@@ -62,6 +64,12 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         if (selectedTunnel != null) outState.putString(KEY_SELECTED_TUNNEL, selectedTunnel!!.name)
         super.onSaveInstanceState(outState)
+    }
+
+    override fun attachBaseContext(newBase: Context) {
+        // Apply the correct locale to the activity's context
+        val context = LocaleManager.applyLocale(newBase)
+        super.attachBaseContext(context)
     }
 
     protected abstract fun onSelectedTunnelChanged(oldTunnel: ObservableTunnel?, newTunnel: ObservableTunnel?): Boolean

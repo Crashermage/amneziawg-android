@@ -27,13 +27,6 @@
         android:name="android.hardware.camera"
         android:required="false" />
 
-    <permission
-        android:name="${applicationId}.permission.CONTROL_TUNNELS"
-        android:description="@string/permission_description"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/permission_label"
-        android:protectionLevel="dangerous" />
-
     <application
         android:name=".Application"
         android:allowBackup="false"
@@ -89,21 +82,6 @@
             android:screenOrientation="fullSensor"
             tools:replace="screenOrientation" />
 
-        <activity
-            android:name=".activity.LogViewerActivity"
-            android:exported="false"
-            android:label="@string/log_viewer_title">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-
-        <provider
-            android:name=".activity.LogViewerActivity$ExportedLogContentProvider"
-            android:authorities="${applicationId}.exported-log"
-            android:exported="false"
-            android:grantUriPermissions="true" />
-
         <receiver
             android:name=".BootShutdownReceiver"
             android:exported="true">
@@ -115,12 +93,9 @@
 
         <receiver
             android:name=".model.TunnelManager$IntentReceiver"
-            android:exported="true"
-            android:permission="${applicationId}.permission.CONTROL_TUNNELS">
+            android:exported="true">
             <intent-filter>
                 <action android:name="org.amnezia.awg.action.REFRESH_TUNNEL_STATES" />
-                <action android:name="org.amnezia.awg.action.SET_TUNNEL_UP" />
-                <action android:name="org.amnezia.awg.action.SET_TUNNEL_DOWN" />
             </intent-filter>
         </receiver>
 

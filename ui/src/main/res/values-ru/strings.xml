@@ -85,9 +85,6 @@
     <string name="add_peer">Добавить пир</string>
     <string name="addresses">Адреса</string>
     <string name="applications">Приложения</string>
-    <string name="allow_remote_control_intents_summary_off">Внешние приложения не могут переключать туннели (рекомендуется)</string>
-    <string name="allow_remote_control_intents_summary_on">Внешние приложения могут переключать туннели (продвинутые)</string>
-    <string name="allow_remote_control_intents_title">Разрешить управление через внешние приложения</string>
     <string name="allowed_ips">Разрешенные IP</string>
     <string name="bad_config_context">%1$s из %2$s</string>
     <string name="bad_config_context_top_level">%s</string>
@@ -167,12 +164,9 @@
     <string name="listen_port">Порт</string>
     <string name="log_export_error">Не удалось экспортировать журнал: %s</string>
     <string name="log_export_subject">Файл журнала AmneziaWG Android</string>
-    <string name="log_export_success">Сохранено в “%s”</string>
+    <string name="log_export_success">Сохранено в "%s"</string>
     <string name="log_export_title">Экспорт журнала в файл</string>
     <string name="log_saver_activity_label">Сохранить журнал</string>
-    <string name="log_viewer_pref_summary">Журналы могут помочь при отладке</string>
-    <string name="log_viewer_pref_title">Просмотр журналов приложения</string>
-    <string name="log_viewer_title">Журнал</string>
     <string name="logcat_error">Не удалось запустить logcat: </string>
     <string name="module_enabler_disabled_summary">Экспериментальный модуль ядра может улучшить производительность</string>
     <string name="module_enabler_disabled_title">Включить бэкэнд модуля ядра</string>
@@ -217,6 +211,11 @@
     <string name="save">Сохранить</string>
     <string name="select_all">Выбрать все</string>
     <string name="settings">Настройки</string>
+    <string name="language_title">Язык</string>
+    <string name="language_summary">Выберите язык приложения</string>
+    <string name="language_system">Системный</string>
+    <string name="language_english">Английский</string>
+    <string name="language_russian">Русский</string>
     <string name="shell_exit_status_read_error">Shell не может прочитать статус выхода</string>
     <string name="shell_marker_count_error">Shell ожидает 4 маркера, получено %d</string>
     <string name="shell_start_error">Не удалось запустить Shell: %d</string>
@@ -258,16 +257,9 @@
     <string name="version_summary">Бэкенд: %1$s %2$s</string>
     <string name="version_summary_checking">Проверка версии бэкэнда %s</string>
     <string name="version_summary_unknown">Неизвестная версия %s</string>
-    <string name="version_title">AmneziaWG для Android v%s</string>
-    <string name="vpn_not_authorized_error">Сервис VPN не авторизован пользователем</string>
-    <string name="vpn_start_error">Не удалось запустить службу Android VPN</string>
-    <string name="zip_export_error">Не удалось экспортировать туннели: %s</string>
-    <string name="zip_export_success">Сохранено в “%s”</string>
-    <string name="zip_export_summary">Zip-файл будет сохранен в папке загрузок</string>
-    <string name="zip_export_title">Экспорт туннелей в zip-файл</string>
-    <string name="biometric_prompt_zip_exporter_title">Аутентификация для экспорта туннелей</string>
+    <string name="vpn_not_authorized_error">VPN-сервис не авторизован пользователем</string>
+    <string name="vpn_start_error">Не удалось запустить VPN-сервис Android</string>
     <string name="biometric_prompt_private_key_title">Аутентификация для просмотра приватного ключа</string>
     <string name="biometric_auth_error">Ошибка аутентификации</string>
     <string name="biometric_auth_error_reason">Ошибка аутентификации: %s</string>
-    <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы Amnezia доступны только на сайте <a href="https://storage.googleapis.com/amnezia/amnezia.org">amnezia.org</a>\n</string>
 </resources>

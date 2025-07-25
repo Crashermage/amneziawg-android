@@ -29,16 +29,24 @@ object UserKnobs {
         }
     }
 
-    private val MULTIPLE_TUNNELS = booleanPreferencesKey("multiple_tunnels")
-    val multipleTunnels: Flow<Boolean>
-        get() = Application.getPreferencesDataStore().data.map {
-            it[MULTIPLE_TUNNELS] ?: false
-        }
-
     private val DARK_THEME = booleanPreferencesKey("dark_theme")
+    private val LANGUAGE = stringPreferencesKey("language")
+    private val MULTIPLE_TUNNELS = booleanPreferencesKey("multiple_tunnels")
+    private val RESTORE_ON_BOOT = booleanPreferencesKey("restore_on_boot")
+
     val darkTheme: Flow<Boolean>
         get() = Application.getPreferencesDataStore().data.map {
             it[DARK_THEME] ?: false
+        }
+
+    val language: Flow<String>
+        get() = Application.getPreferencesDataStore().data.map {
+            it[LANGUAGE] ?: "system"
+        }
+
+    val multipleTunnels: Flow<Boolean>
+        get() = Application.getPreferencesDataStore().data.map {
+            it[MULTIPLE_TUNNELS] ?: false
         }
 
     suspend fun setDarkTheme(on: Boolean) {
@@ -47,13 +55,12 @@ object UserKnobs {
         }
     }
 
-    private val ALLOW_REMOTE_CONTROL_INTENTS = booleanPreferencesKey("allow_remote_control_intents")
-    val allowRemoteControlIntents: Flow<Boolean>
-        get() = Application.getPreferencesDataStore().data.map {
-            it[ALLOW_REMOTE_CONTROL_INTENTS] ?: false
+    suspend fun setLanguage(lang: String) {
+        Application.getPreferencesDataStore().edit {
+            it[LANGUAGE] = lang
         }
+    }
 
-    private val RESTORE_ON_BOOT = booleanPreferencesKey("restore_on_boot")
     val restoreOnBoot: Flow<Boolean>
         get() = Application.getPreferencesDataStore().data.map {
             it[RESTORE_ON_BOOT] ?: false

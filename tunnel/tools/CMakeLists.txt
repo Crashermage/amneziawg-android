@@ -5,6 +5,11 @@
 cmake_minimum_required(VERSION 3.4.1)
 project("AmneziaWG")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")
+
+# Add linker flags for 16 KB alignment
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-z,max-page-size=0x4000")
+set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-z,max-page-size=0x4000")
+
 add_link_options(LINKER:--build-id=none)
 add_compile_options(-Wall -Werror)
 
